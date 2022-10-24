@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+php_flag register_globals Off 
+
+<Files "WTP/Elevs/*.json">
+allow from all
+</Files>
+<Files "WTP/Stat/*.txt">
+allow from all
+</Files>

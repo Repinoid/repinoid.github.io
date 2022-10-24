@@ -1,0 +1,170 @@
+body {
+    display: block;
+    margin: 0px 0px;
+	padding: 0px ;
+	overflow: hidden;
+}
+p {														/* все абзацы */
+	margin: 0px 0px;
+}
+button {												/* тень для всех кнопок */
+//		box-shadow:0 0 10px rgba(0,0,0,0.5);	
+}
+
+#copyURL {
+	position: absolute; 
+	bottom: 40px ; left: 20px ;	
+	padding: 3px ;
+	border-radius: 2px  ;
+	opacity: 0.8; 
+	z-index: 5;	
+}
+#mapCell {
+		margin: 0 ; padding: 0;
+		height: 100vh;
+		width: 100vw;
+		z-index: 3 ;
+		position: absolute;
+		top: 0px;
+		left: 0px ; 
+//		overflow: hidden;
+}
+
+#topoDiv {
+		position: absolute;
+		top: 100px;
+		right: 100px ;
+		width: 150px ;
+		z-index: 5;	
+		background-color: #E0FFFF ;
+		border: 4px double black;
+		display: none ;
+}
+#topoTable {
+	width: 100% ;
+	text-align:center;
+	
+}
+#rightTable, #leftTable {
+		position: absolute;
+		top: 100px;
+		z-index: 5;	
+		border: 3px ;
+}
+#rightTable, #leftTable img {
+ max-width:100%;
+  height:auto;
+}
+#leftTable {
+		left: 0px;
+}
+#rightTable {
+		right: 0px;
+}
+#parametersCell, #panoramaButt, #topoButt, #sunnyButt, #profileButt, #polyButt, #newRectaArea, #openLupas {
+		display: none ;
+}
+
+#panoramaButt, #topoButt, #sunnyButt, #profileButt, #polyButt, #EnDiv, #RuDiv {
+		font: 14pt/12pt sans-serif;	
+		border-bottom-left-radius: 15px  ;
+		border-top-left-radius: 15px ;
+		z-index: 5;
+		opacity: 0.7 ;
+		line-height: 0.9 ;
+}
+#openLupas {
+		font: 14pt/12pt sans-serif;	
+		border-bottom-left-radius: 15px  ;
+		border-bottom-right-radius: 15px ;
+		margin-left: 20px ;
+		z-index: 5;
+		opacity: 0.5 ;
+		line-height: 0.9 ;
+}
+
+#EnDiv, #RuDiv {	
+		position: absolute;
+		top: 5px;
+		right: 0px;
+		padding: 10px;
+}
+#parametersCell, #setLocationButton, #getRectalElevations, #newRectaArea {
+		padding: 10px;
+		font: 14pt/12pt sans-serif;	
+		border-bottom-right-radius: 15px  ;
+		border-top-right-radius: 15px ;
+		z-index: 5;
+		opacity: 0.9 ;
+		line-height: 0.9 ;
+}
+#helpButt {
+	position: absolute;	
+	top: 5px ;
+	right: 10px ;
+	padding: 2px ;
+	border-radius: 25px  ;
+	opacity: 1; 
+	z-index: 5;	
+}
+#sunSlider {
+	width: 600px ;
+}
+#chB {														/* увеличение чекбокса */
+		transform: scale(1.5);
+		margin-bottom: 10px ;
+}
+
+#parametersCell:hover, #panoramaButt:hover, #setLocationButton:hover, #profileButt:hover, #polyButt:hover, #openLupas:hover,
+#getRectalElevations:hover,  #newRectaArea:hover, #topoButt:hover, #sunnyButt:hover, #helpButt:hover, #copyURL:hover
+ {		/* вывод из тени при наведении мыши */
+	opacity: 1 ;
+}
+#sunHour, #calend {
+	margin-left: 3vw ;
+	background-color: #E0FFFF ;
+}
+#sunSetTime, #sunRiseTime {
+	width: 120px ;
+	margin-left: 3vw ;
+}
+#helpOnOff, #ENRU {
+	width: 100% ;
+	padding: 3px ;
+	background-color: transparent;
+	font-weight: 700;
+}
+.hlps {
+	background-color: #F0FFF0;
+	text-align: center;
+	padding: 3px ;
+	border-radius: 15px ;
+	vertical-align: bottom; 
+	width: 100% ;
+	height: 100% ;
+}
+
+#hlpRect {
+		position: absolute;
+		top: 10vh;
+		right: 12vw ;
+		z-index: 5;	
+		border: 4px double black;
+		background-color: #E0FFFF ;
+		border-radius: 15px  ;
+		opacity: 0.85 ;
+		font-weight: 900;
+
+}
+#hlpTxt {
+		margin: 3px ; 
+		padding: 3px;	
+		top: 50px;
+		left: 50px ;
+		text-align: center;	
+}
+#hlpRectClose {
+		position: absolute;
+		top: 10px;
+		right: 17px ;
+}

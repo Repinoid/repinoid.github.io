@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="ru">
+<head>
+	<title>Track Browser</title>
+	<script src="https://www.google.com/jsapi"></script> 	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<meta name			=	"keywords" 		content="GPX Browser Track Share Route Трек Маршрут Карта">
+	<meta http-equiv	=	"keywords" 		content="GPX Browser Track Share Route Трек Маршрут Карта">
+	<meta name			=	"description" 	content="GPX Browser. Просмотр GPX и создание ссылки на маршруты. ">
+	<meta http-equiv	=	"description" 	content="GPX Browser. Просмотр GPX и создание ссылки на маршруты. ">
+	
+		<meta name="Access-Control-Allow-Origin" content="*" />
+		<meta name="Access-Control-Allow-Headers" content="*" />	
+	
+	<LINK REL="stylesheet" TYPE="text/css" HREF="./CODE/trackStyle.css">
+	<link rel="icon" 										href="favicon.svg" 					type="image/svg+xml">
+	<link rel="shortcut icon" 								href="favicon.svg" 					type="image/svg+xml">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>	
+</head>
+  
+<body>
+			<div id="mapCell">	</div>
+			<div id = "blink_text" style= "display: none" >Wait for Data Loading ... <br>Загрузка данных ...</div>
+			<div id='forTrackName' style= "display: none"></div>
+			<div id='velocity'></div>
+			
+			
+			<div id="hlpRect" style= "display: none" >		
+				<div id="hlpRectClose" 	onclick="hlpRect.style.display = 'none'"><img src="./CODE/close22.png" style="vertical-align: middle"></div>
+				<p id = "hlpTxt"></p>
+			</div>
+			<div id="saveHelp" style= "display: none" >		
+				<div id="saveHelpClose"	onclick="saveHelp.style.display = 'none'"><img src="./CODE/close22.png" style="vertical-align: middle"></div>
+					<p id = "saveTxt"></p>
+			</div>				
+			
+			<table id='upperTable'>
+				<tr>
+					<td id="forFileInput">
+						<div>
+							<!-- <label for= "frd" >Load GPX</label> -->
+							<input type="file" id = "frd"  accept=".gpx,.GPX" onchange="readFiles(this)"  />
+						</div>
+					</td >
+					<!-- <td > -->
+					<!-- </td> -->
+					<td id = "forPolzun" >
+						<input type="range"	id="polzun" min="1" max="24" value="10" step="1" style = "zIndex: 5"><br>
+
+					</td>
+					<td>
+						<button id="saveMapButton">Share<br>Track</button>
+					</td>
+					<td >
+						<button id = "helpButt" onclick="hlpRect.style.display = 'block'">
+							<img src="./CODE/Help.gif" sizes="3vh" srcset="./CODE/Help.gif 50w"> 
+						</button>
+					</td>
+					
+				</tr>
+			</table>
+			
+			
+			 <input id = "frd" type="file" onchange="readFiles(this)">
+
+				
+	<!-- <script src = "new40.js"> </script> -->
+	<!-- <script src = "new20.gpx"> </script> -->
+	<script src = "./CODE/trackUtils.js"> </script>
+	<script src = "./CODE/trackSaves.js"> 		</script>
+	<script src = "./CODE/trackJs.js"> 			</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/
+			api/js?
+			key=AIzaSyBTv0CB1JYy4L6JeDkCfbmPNArPgRpFp3A
+			&callback=initMap
+			">
+	</script>
+	
+	
+  </body>
+</html>
+
+			<!-- key=AIzaSyDNDAONk3NFxXJAbeYwpubCcdsm5_08ytE -->

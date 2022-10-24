@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="ru">
+<head>
+	<title>3D Map</title>
+	<script src="https://www.google.com/jsapi"></script> 	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<meta name="keywords" content=" 3D Map Altitude Horizon line Elevations Slope Hill Mountain Chart Imaging Visualization Topography Topology Топография Горизонт Горы Карта высота ">
+	<meta http-equiv="keywords" content="3D Map Altitude Horizon line Elevations Slope Hill Mountain Chart Imaging Visualization Topography Topology Топография Горизонт Горы Карта высота ">
+	<meta name="description" content="3D Altitudes Explorer Calculation of the horizon line and height profiles, Elevations Chart, Shadows Visualization  ">
+	<meta http-equiv="description" content="3D Geodata Imaging Software. Рельеф местности. Карта высот. Панорама горизонта. 3D карта">
+	
+	<meta name="Access-Control-Allow-Origin" content="*" />
+	<meta name="Access-Control-Allow-Headers" content="*" />
+
+	<meta name="yandex-verification" content="b05f3acaebc02a72" />
+	
+	<!-- <meta name="yandex-verification" content="eedc6c084ed7d4b4" />	 -->
+	
+	<LINK REL="stylesheet" TYPE="text/css" HREF="WTP/Styles/style_file.css">
+	<LINK REL="stylesheet" TYPE="text/css" HREF="WTP/Styles/topTableStyle.css">
+	<LINK REL="stylesheet" TYPE="text/css" HREF="WTP/Styles/canvaStyle.css">
+	<LINK REL="stylesheet" TYPE="text/css" HREF="WTP/Styles/formsStyle.css">
+	<LINK REL="stylesheet" TYPE="text/css" HREF="WTP/Styles/3dStyles.css">
+	<link rel="icon" 			href="/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" 	href="/favicon.ico" type="image/x-icon">
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	
+</head>
+  
+  <!-- <body onload = "firstRecta = setFirstRectangle(); getFirstElevations()"> -->
+  <body  onload = "initiation()">
+
+<!--  ********************************************************************** КАРТА ***************************************************				 -->							
+		<div id = "blink_text" style= "display: none" >Wait for Data Loading ... <br>Загрузка данных ...</div>
+				<div id="mapCell">
+				</div>
+	
+					<div id="hlpRect" style= "display: none" >		
+						<div id="hlpRectClose" onclick="hlpRect.style.display = 'none'"><img src="WTP/IMG/close22.png" style="vertical-align: middle"></div>
+							<p id = "hlpTxt"></p>
+					</div>	
+  <!--  *************************************************************************************************************************				 -->  
+				<table id="rightTable">
+					<tr>
+								<td id = "panoramaButtHelpEN" class="hlps" style= "display: none">
+									Horizon<br>Panorama
+								</td>
+								<td id = "panoramaButtHelpRU" class="hlps" style= "display: none">
+									Панорама<br>Горизонта
+								</td>
+						<td>
+							<button id="panoramaButt" style= "display: none" >
+									<img src='WTP/IMG/piks.gif' sizes="8vh" srcset="WTP/IMG/piks.gif 50w, WTP/IMG/piks30.gif 30w"> 
+							</button>
+						</td>
+					</tr>
+					<tr>
+								<td id = "profileButtHelpEN" class="hlps" style= "display: none">
+									Altitudes<br>By Azimuth
+								</td>
+								<td id = "profileButtHelpRU" class="hlps" style= "display: none">
+									Высоты<br>По азимуту
+								</td>
+						<td>
+							<button id="profileButt" style= "display: none">
+									<img src='WTP/IMG/eleSlice.gif' sizes="8vh" srcset="WTP/IMG/eleSlice.gif 50w, WTP/IMG/eleSlice30.gif 30w"> 
+							</button>
+						</td>
+					</tr>
+					<tr>
+								<td id = "topoButtHelpEN" class="hlps" style= "display: none">
+									TOPO<br>graphy
+								</td>
+								<td id = "topoButtHelpRU" class="hlps" style= "display: none">
+									ТОПО<br>графия
+								</td>
+						<td>
+							<button id="topoButt" style= "display: none" >
+									<img src='WTP/IMG/Topo.gif' sizes="8vh" srcset="WTP/IMG/Topo.gif 50w, WTP/IMG/Topo30.gif 30w">
+							</button>
+						</td>
+					</tr>
+					<tr>
+								<td id = "sunnyButtHelpEN" class="hlps" style= "display: none">
+									Shadows
+								</td>
+								<td id = "sunnyButtHelpRU" class="hlps" style= "display: none">
+									Тени
+								</td>
+					
+						<td>
+							<button id = "sunnyButt" style= "display: none"  >
+									<img src='WTP/IMG/sunny.gif' sizes="8vh" srcset="WTP/IMG/sunny.gif 50w, WTP/IMG/sunny30.gif 30w">
+							</button>
+						</td>
+					</tr>
+					<tr>
+								<td id = "polyButtHelpEN" class="hlps" style= "display: none">
+									Altitudes<br>By Path
+								</td>
+								<td id = "polyButtHelpRU" class="hlps" style= "display: none">
+									Высоты<br>По пути
+								</td>
+					
+						<td>
+							<button id = "polyButt" style= "display: none" >
+									<img src='WTP/IMG/poly.gif' sizes="8vh" srcset="WTP/IMG/poly.gif 50w, WTP/IMG/poly30.gif 30w">					
+							</button>
+						
+						</td>
+					</tr>
+				</table>
+<!--  *************************************************************************************************************************				 -->  
+				<button id = "helpButt" >
+						<img src='WTP/IMG/Help.gif'>
+				</button>
+<!--  *************************************************************************************************************************				 -->
+				<div id = "sunTable">
+
+						<span id="sunRiseTime">
+							0 hours
+						</span>
+						<span id="sunCell">
+								<input type="range"	id="sunSlider" min="0" max="24" value="10.5" step="0.01" 
+														onchange="sunRays()"> 
+						</span>
+						<span id="sunSetTime">
+							24 hours
+						</span>
+					<br>
+
+						<span id="calend">
+							Set Date <input	type="date" id = "calendar">
+						</span>
+						<span id="sunHour">
+						</span>
+
+				</div>
+<!--  *************************************************************************************************************************				 -->				
+				<table id="canvaTable">
+					<tr>
+						<td id = "horiLeftVal" >
+						</td>
+						<td>
+							<input type="range"	id="horizonSlider" min="-240" max="240" value="0" step="1">					 
+						</td>
+						<td id = "horiRightVal">
+						</td>
+					</tr>
+					<tr>
+						<td class="graduses">&uArr;<br><br>
+							<div id="maxAnInd" ></div>
+								<hr>
+							<div id="minAnInd" ></div><br>&dArr;
+						</td>
+						<td id="canvaCell0">
+							<canvas id="eleCanva"> </canvas>				
+						</td>
+						<td class="graduses">
+									&hArr;<br>
+									<input type="radio"		name="panoramaViewAngle"	onclick="drawGorizont(  getHorizonT(POV, AllRects) )"	value="90"				>90  <br>
+									<input type="radio"		name="panoramaViewAngle"	onclick="drawGorizont(  getHorizonT(POV, AllRects) )"	value="120"	checked		>120 <br>
+									<input type="radio"		name="panoramaViewAngle"	onclick="drawGorizont(  getHorizonT(POV, AllRects) )"	value="360" 			>360 <br><br>
+									<button id = "maxPanoramaResolutin" onclick="drawGorizont(  getHorizonT(POV, AllRects, 1) )"	>Max</button>
+						</td>
+					</tr>
+				</table>
+<!--  *************************************************************************************************************************				 -->
+				<table id = "topTable">
+					<tr>
+						<td class="HDAcells"> 
+							<p id="EleValue" 	class="latlngVal" ></p>
+							<p id="distValue" 	></p>
+							<p id="azzyValue" 	></p>
+						</td>
+						<td > 
+							<p>LAT</p>
+							<p>LNG</p>
+						</td>
+						<td class="LatLngCells"> 
+							<p id="LatLabel" class="latlngVal">0</p>
+							<p id="LngLabel" class="latlngVal">0</p>
+						</td>
+						<td id="LLinHours"> 
+							<p id="LatInHours" >0</p>							
+							<p id="LngInHours" >0</p>
+						</td>
+						<td id = "heightSliderCell"> 
+							<input type="range"	id="heightSlider" min="2" max="100" value="2" step="1" 
+															onpointermove="heightVal.value = this.value; drawGorizont(  getHorizonT(POV, AllRects) )"	>					 
+						</td>
+						<td>
+							<img src='WTP/IMG/rost.gif'>
+						</td>
+						<td	 id="heightValCell">
+							<INPUT type="text" id="heightVal" value="2">
+						</td>
+						<td>
+							<button id = "openLupas" onclick="setLupa(AllRects)" style= "display: none"	>
+								<img src='WTP/IMG/minmax50.gif'>					
+							</button>
+						</td>
+					</tr>
+				</table>
+<!--  *************************************************************************************************************************				 -->				
+				<table id="leftTable">
+					<tr>
+						<td>
+							<button id = "setLocationButton" onclick="setLocationForm.style.display = 'block'; window.location.hash = null" >
+								<img src='WTP/IMG/SearchLoc.gif'>					
+							</button>
+						</td>
+						<td id = "setLocoHelpEN" class="hlps">
+							SET <br>Location
+						</td>
+						<td id = "setLocoHelpRU" class="hlps">
+							Задать<br>Адрес
+						</td>
+					</tr>
+					<tr>
+						<td>
+ 							<button id = "getRectalElevations" onclick="getMainElevator(2)" >
+								<img src='WTP/IMG/Download.gif'>					
+							</button>						 
+						</td>
+						<td id = "getEleHelpEN" class="hlps">
+							GET <br>DATA
+						</td>
+						<td id = "getEleHelpRU" class="hlps">
+							Получить<br>Данные
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id = "parametersCell" onclick="parametersForm.style.display = 'block'" style= "display: none">
+									<img src='WTP/IMG/params.gif'>
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id = "helpOnOff" onclick="setLocoHelpEN.style.display = 'none'" >
+									HELP<br>OFF
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id = "ENRU" >
+									RU
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="butt3D" style= "display: none" >
+								<img src='WTP/IMG/3D.png'>
+							</button>		
+						</td>
+					</tr>
+					
+					
+				</table>				
+<!--  *************************************************************************************************************************				 -->				
+				<div id = "setLocationForm" >
+					<button id = "setLocationTableCloseX" onclick="setLocationForm.style.display = 'none'"><img src="WTP/IMG/close22.png" style="vertical-align: middle"></button>
+					<br>
+					<INPUT type="text" id = "locationCoordinatesField" placeholder="Coordinates">
+					<button id="locationCoordinatesButton" ><img src="WTP/IMG/enter50.gif" style="vertical-align: middle"></button> 
+					<br><br>
+					<p id="latlngTxt" >Latitude, longitude	(i.e. 54.3119, 48.4079) </p>
+					<p>OR </p><br>
+					<button id="locationAddressButton" ><img src="WTP/IMG/enter50.gif" style="vertical-align: middle; "></button>								
+					<INPUT type="text" id = "locationAddressField" placeholder="Address">	<br>							
+				</div>
+<!--  *************************************************************************************************************************				 -->						
+				<div id = "parametersForm">
+					<button id = "parametersCloseX" onclick="parametersForm.style.display = 'none'"><img src="WTP/IMG/Ok25.png" style="vertical-align: middle"></button>
+					<br><p><img src='WTP/IMG/sector.gif'> </p>
+									<input style="display: 'inline'"
+									type="radio"		name="radioSectors"		value="360"		onchange = "drawGorizont(  getHorizonT(POV, AllRects) )"		>1&ordm &nbsp;
+									<input type="radio"		name="radioSectors"		value="180"	checked	onchange = "drawGorizont(  getHorizonT(POV, AllRects) )"		>2&ordm &nbsp;
+									<input type="radio"		name="radioSectors"		value="120" 	onchange = "drawGorizont(  getHorizonT(POV, AllRects) )"	>3&ordm &nbsp;
+									<input type="radio"		name="radioSectors"		value="60"		onchange = "drawGorizont(  getHorizonT(POV, AllRects) )"		>6&ordm &nbsp;
+					<hr>
+									<p id = "stepTXT"><img src='WTP/IMG/step.gif'></p> &nbsp; X<div id="iteraVal">8</div>&nbsp;
+					<br>
+						2<input type="range" id="iteraSlider" min="2" max="20" value="8" step="2" 
+														onpointermove="iteraVal.innerText = this.value; drawGorizont(  getHorizonT(POV, AllRects) )">20
+					<hr><img src='WTP/IMG/spot.gif'>
+						 <div id = "curColor"></div>
+						<br>
+						&nbsp;					
+								<p id="opacityVal">0.2</p>
+					<br>
+								0<input type="range"	id="polyOpacitySlider" min="0" max="1" value="0.2" step="0.05" 
+																				onpointermove="curColor.style.opacity = this.value; opacityVal.innerText = this.value; setHoriShadow()"	>1
+					<hr>			
+								<button id="C1" class="clrButts" style = "background-color:Red;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()" ></button>
+								<button id="C2" class="clrButts" style = "background-color:Green;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+								<button id="C3" class="clrButts" style = "background-color:Blue;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+								<button id="C4" class="clrButts" style = "background-color:Pink;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+								<button id="C5" class="clrButts" style = "background-color:Yellow;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+								<button id="C6" class="clrButts" style = "background-color:Grey;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+								<button id="C7" class="clrButts" style = "background-color:Brown;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+								<button id="C8" class="clrButts" style = "background-color:Cyan;"	onclick="curColor.style.backgroundColor = this.style.backgroundColor; setHoriShadow()"></button>
+				</div>
+<!--  *************************************************************************************************************************				 -->	
+				<div id="topoDiv" style= "display: none" >
+					<table id="topoTable">
+						<tr>
+							<th id="topoColorHead">
+								Color
+							</th>
+							<th id="topoLevelsHead">
+								Heights
+							</th>
+						</tr>
+					</table>
+					<hr>
+					Opacity<br>
+					0<input type="range" id="topoOpacitySlider" min="0" max="1" value="0.5" step="0.05" >1
+				</div>
+<!--  *************************************************************************************************************************				 -->	
+				<canvas id ="canva" style= "display: none"> </canvas>			
+
+		<div id ="canvaCell">
+				<div id="Hs"></div>
+				<div id="camData"></div>
+				<button id="butt2D" >
+					<img src='WTP/IMG/2D.gif'>
+				</button>		
+				
+				<canvas id ="canva3D" style= "display: none"> </canvas>	
+				<input type="range"	id="slider3D" min="1" max="12" value="5" step="1" style = "zIndex: 5"  >				
+		</div>	
+		
+		<button id="newySite">
+			<a href="index.html">Новая версия сайта<hr>New site version</a>
+		</button>
+
+
+	<script src = "WTP/setObjects.js"> </script>
+	<script src = "WTP/setScreens.js"> </script>
+	<script type="module" src = "WTP/zero.js"> </script>
+	<script src = "WTP/ini.js"> </script>
+	<script src = "WTP/RectAngles.js"> </script>
+	<script src = "WTP/promices.js"> </script>
+	<script src = "WTP/funcs.js"> </script>
+	<script src = "WTP/calcs.js"> </script>
+	<script src = "WTP/drawing.js"> </script>
+	<script src = "WTP/drawProfile.js"> </script>
+	<script src = "WTP/sunPosition.js"> </script>
+	<script src = "WTP/sunny.js"> </script>
+	<script src = "WTP/topos.js"> </script>
+	<script src = "WTP/lupas.js"> </script>
+	<script src = "WTP/polyProfile.js"> </script>
+	<script src = "WTP/getLocation.js"> </script>
+	<script src = "WTP/NoRects.js"> </script>
+	<script src = "WTP/map2canva.js"></script>  
+	<!-- <script src = "WTP/loadFromJson.js"></script>   -->
+	
+	<script async defer
+	src="https://maps.googleapis.com/maps/
+			api/js?
+			key=AIzaSyBTv0CB1JYy4L6JeDkCfbmPNArPgRpFp3A
+			&callback=initMap
+			&libraries=visualization,geometry
+			">
+	</script>
+	
+  </body>
+</html>

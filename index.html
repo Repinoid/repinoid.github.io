@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="ru">
+<head>
+	<title>3D Map</title>
+	<script src="https://www.google.com/jsapi"></script> 	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="keywords" content="Украина. Линия фронта. 3D Map Altitude Horizon line Elevations Slope Hill Mountain Chart Imaging Visualization Topography Topology Топография Горизонт Горы Карта высота ">
+	<meta http-equiv="keywords" content="Украина. Линия фронта. 3D Map Altitude Horizon line Elevations Slope Hill Mountain Chart Imaging Visualization Topography Topology Топография Горизонт Горы Карта высота ">
+	<meta name="description" content="Украина. Линия фронта. 3D карта. Топография. Уровень моря. Создать карту. Поделиться картой. Редактировать карту. Рельеф местности. Карта высот. Панорама горизонта. ">
+	<meta http-equiv="description" content="Украина. Линия фронта. 3D Geodata Imaging Software.">
+		<meta name="Access-Control-Allow-Origin" content="*" />
+		<meta name="Access-Control-Allow-Headers" content="*" />
+	<LINK REL="stylesheet" TYPE="text/css" HREF="Styles/Astyle_file.css">
+	<LINK REL="stylesheet" TYPE="text/css" HREF="Styles/AtopTableStyle.css">
+	<LINK REL="stylesheet" TYPE="text/css" HREF="Styles/cubic.css">
+		<LINK REL="stylesheet" TYPE="text/css" HREF = "./platoon/code/platoon_style.css">
+	
+		<link rel="icon" 										href="PIX/favicon.svg" 					type="image/svg+xml">
+		<link rel="shortcut icon" 								href="PIX/favicon.svg" 					type="image/svg+xml">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<!-- Yandex.Metrika counter -->
+	<!-- <script type="text/javascript" > -->
+	   <!-- (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; -->
+	   <!-- m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) -->
+	   <!-- (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); -->
+	   <!-- ym(74205112, "init", { -->
+			<!-- clickmap:true, -->
+			<!-- trackLinks:true, -->
+			<!-- accurateTrackBounce:true, -->
+			<!-- webvisor:true -->
+	   <!-- }); -->
+	<!-- </script> -->
+	<!-- <noscript><div><img src="https://mc.yandex.ru/watch/74205112" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
+	<!-- /Yandex.Metrika counter -->	
+</head>
+  
+   <body > 
+		<div id = "blink_text" style= "display: none" >Wait for Data Loading ... <br>Загрузка данных ...</div>
+		<canvas id ="canva" style= "display: none"> </canvas>		
+		
+		<div id="mapCell"  style = "height: 100vh; overflow-y:  hidden"></div>
+		
+		<!-- <canvas id="cubatura" onclick=start() ></canvas> -->
+
+		<div id="between" onclick=start() ><img id = "btwImg" src="PIX/ForCubic/3D.gif"></div>
+		
+		<canvas id="canva3D" style= "display: none" ></canvas>
+
+
+		<button id="oldySite" style= "display: none">
+			<a href="oldy.html">&nbsp Старая версия сайта &nbsp</a><img src="favicon.ico">&nbsp
+		</button>
+		<button id="theWar" >
+			<!-- <a href="./#P2022-10-07/000">&nbsp Украина - ЛИНИЯ ФРОНТА &nbsp </a> -->
+			&nbsp Украина - ЛИНИЯ ФРОНТА &nbsp 
+		</button>
+
+		<!-- <div id="covidno" onclick = "coronaLoco()"><span style = "color: Red" >NEW !!!<span> -->
+			<!-- <a href="covid/index.html"> Коронавирус<br>Только на этом сайте :<br> -->
+								<!-- Статистика и графики<br>по странам и регионам РФ</a> -->
+		<!-- </div> -->
+
+		<div >
+			<span id= "promptString" > </span>
+		</div>
+		<div id = "mapNameDiv"> 	
+			<input type="text"  size = '30' id = "mapName" placeholder = "Задайте имя карте ..." >
+		</div>
+	
+		<button id="setLocationButton" 	onclick="setLocationForm.style.display = 'block'">Место<br>	
+										<img src="PIX/SearchLoc.gif"><br>Location 
+		</button>
+						
+		<table id = "setLocationForm" style= "display: none">
+			<tr>
+				<td id = "setLocationTableCloseX" onclick="setLocationForm.style.display = 'none'"><img src="PIX/close22.png">
+				</td>
+			</tr>
+			<tr>
+				<td>
+						<button id="goHomeButton" onclick=goHomeLocation() align = "center" >
+							HOME&nbsp &#9658 &nbsp
+							<img src="PIX/home.gif"
+							 sizes="3vh" srcset="PIX/home.gif 50w"> 
+							&nbsp &#9668 &nbspДОМ
+						</button>
+				</td>
+			</tr>
+			<tr>
+				<td><hr>Введите координаты - широта, долгота <br>	
+						<INPUT type="text" id = "locationCoordinatesField" placeholder="Coordinates" ondblclick = CenterMapByCoordinatesFunction()>
+						<button id="locationCoordinatesButton" 
+							onclick = CenterMapByCoordinatesFunction()>
+							<img src="PIX/enter50.gif"
+							 sizes="5vh" srcset="PIX/enter50.gif 50w"> 
+							<!-- <img src="PIX/enter50.gif" > -->
+						</button>
+						<br>Latitude, longitude	(i.e. 54.3119, 48.4079)
+				</td>
+			</tr>
+			<tr>
+				<td >
+					<p>ИЛИ задайте адрес</p>
+					<INPUT type="text" id = "locationAddressField" placeholder="Address" ondblclick = CenterMapByAddressFunction()><br>
+				</td>
+			</tr>
+			<tr>
+				<td id="locationAddressButton">
+					<button onclick = CenterMapByAddressFunction()>
+							<img src="PIX/enter50.gif"
+							 sizes="5vh" srcset="PIX/enter50.gif 50w"> 
+					</button>
+				</td>
+			</tr>
+		</table>
+		
+		<table id = "slidersTable" style= "display: none">
+			<tr>
+				<td colspan = '3'>Масштаб высоты   |   Height rate <br>
+					<input type="range"	id="slider3D" min="1" max="24" value="10" step="1" style = "zIndex: 5"> 
+				</td>	
+			</tr>
+			<tr>
+				<td colspan = '3'><b>ЗАТОПИ</b>  &nbsp &nbsp | &nbsp&nbsp Your sea level<br>
+					<input type="range"	id="delitel" min="0" max="1" value="0" step="0.01" style = "zIndex: 5">
+				</td>
+			</tr>
+			<tr>
+				<td id="heMin" 		align= "left"  	style = "color:Green">min</td>
+				<td id="heZatop" 	align= "center"	style = "color:Blue">Z</td>
+				<td id="heMax" 		align= "right"	style = "color:Red">max</td>
+			</tr>
+		</table>
+		
+		<table id = "topTable" style= "display: block">
+			<tr>
+				<td > 
+					<span>LAT</span><br>
+					<span>LNG</span> </td>
+				<td class="LatLngCells"> 
+					<span id="LatLabel" class="latlngVal">0</span><br>
+					<span id="LngLabel" class="latlngVal">0</span> </td>
+				<td id="LLinHours"> 
+					<span id="LatInHours" >0</span><br>							
+					<span id="LngInHours" >0</span> </td>
+				<td  > 
+					<span id="distValue" 	class="HDAcells"></span><br>
+					<span id="azzyValue" 	class="HDAcells"></span> </td>
+			</tr>
+			<tr><td>
+					<span id="EleValue" 	class="latlngVal" ></span><br>
+			</td></tr>
+		</table>
+		<button id = "helpButt" onclick="hlpRect.style.display = 'block'">
+				<img src="PIX/Help.gif" sizes="5vh" srcset="PIX/Help.gif 50w"> 
+		</button>
+		<div id="hlpRect" style= "display: none" >		
+			<div id="hlpRectClose" 	onclick="hlpRect.style.display = 'none'"><img src="PIX/close22.png" style="vertical-align: middle"></div>
+				<p id = "hlpTxt"></p>
+		</div>	
+		<div id="warRect" style= "display: none" >
+			<div id="warRectClose" 	onclick="warRect.style.display = 'none'"><img src="PIX/close22.png" style="vertical-align: middle"></div>
+				<p id = "warTxt"></p>
+		</div>	
+		<div id="saveHelp" style= "display: none" >		
+			<div id="saveHelpClose"	onclick="saveHelp.style.display = 'none'"><img src="PIX/close22.png" style="vertical-align: middle"></div>
+				<p id = "saveTxt"></p>
+		</div>	
+		
+		<div id="loadTrackWindow" style= "display: none" style="text-align: center;" >	<br>Select GPX file<br>
+			<span id = "loadTrackText" align = "center"> </span><br>
+			<input type="file" id = "frd"  accept=".gpx,.GPX" onchange="readFiles(this)"  />		
+			<div id="loadTrackClose"	onclick="loadTrackWindow.style.display = 'none'"><img src="PIX/close22.png" style="vertical-align: middle"></div>
+			 <hr><a href="https://whatthepeak.com/run/">GPX files browser</a><hr>
+				<p id = "loadTrackTxt"></p>
+		</div>	
+<!-- ---------------------------------------------------------------------------------------- -->
+
+	<!-- <div id = "figuresButtons"> -->
+	<div id = "elementButs">
+		<table width="100%" >
+			<tr style= "display: none"> 	<td> <button id='buttonTrack' 	class = "figures">Load Track</button> 			</td> </tr>
+			<tr> 	<td> <button id='buttonLine' 	class = "figures">Ломаная</button> 				</td> </tr>
+			<tr> 	<td> <button id='buttonArrow' 	class = "figures">Указатель</button> 			</td> </tr>
+			<tr> 	<td> <button id='buttonGon' 	class = "figures">Полигон</button> 				</td> </tr>		
+			<tr> 	<td> <button id='buttonRectal' 	class = "figures">Прямоугол.</button> 			</td> </tr>		
+			<tr> 	<td> <button id='buttonCircle' 	class = "figures">Окружность</button> 			</td> </tr>
+			<tr> 	<td> <button id='buttonText' 	class = "figures">Текст</button> 				</td> </tr>
+			
+			<tr> 	<td> <hr>Цвет <button id='buttonColor'	class = "figures">COLOR</button> 		</td> </tr>
+			<tr> 	<td>Прозрачность<br> 
+						<input  type="range" style="width: 100%" id="opaSlider" min="0.1" max="0.5" value="0.25" step="0.05" > 
+																									</td> </tr>
+			<tr> 	<td>Толщина линии<br> 
+						<input  type="range" style="width: 100%" id="weightSlider" min="1" max="20" value="3" step="1" > 
+																									</td> </tr>
+			<tr> 	<td> <hr><button id='deleteFigures'	class = "figures" ><img src=".\platoon\PIX\recicle.png"></button>
+																									</td> </tr>
+			<tr> 	<td> <hr><button id='saveUrl' 		class = "figures">Save MAP</button> 		</td> </tr>
+			
+			<!-- style="width: 77px" -->
+		</table> 
+	</div>
+	
+		<div id = "txtForm"  >
+			<div >	Введите текст<br>
+					<input type="text" style = "width: 100%" id = "inputText" placeholder = "Введите текст здесь" ><hr>
+					Текст появится в середине экрана,<br> 
+					перетащите за его середину в нужное место<br>
+					Нажмите ПРАВУЮ КЛАВИШУ мыши по тексту<hr>
+			</div>
+						<input type="range"	id="fontSizeSlider" min="1" max="10" value="2" step="1"> 
+						Размер шрифта<hr>	
+						<!-- <button id="deleteTxt"><img src="./platoon/PIX/recicle.png"></button>	 -->
+						<!-- <button id="closeTxtParam"  style = "float:right; font-size: 150%;" onclick="txtForm.style.display = 'none'">OK</button> -->
+		</div>
+	<div id = "colorTable">
+			<span>Color</span>
+			<table width =  "100%" height="100%">
+				<tr>	<td  id="tC0" class="colorButts" style = "background-color:#000000"	></td> 	</tr>
+				<tr>	<td  id="tC1" class="colorButts" style = "background-color:#FF0000"	></td>  </tr>
+				<tr>	<td  id="tC2" class="colorButts" style = "background-color:#FFAA00"	></td>  </tr>
+				<tr>	<td  id="tC3" class="colorButts" style = "background-color:#FFFF00"	></td>  </tr>
+				<tr>	<td  id="tC4" class="colorButts" style = "background-color:#00FF00"	></td>  </tr>
+				<tr>	<td  id="tC5" class="colorButts" style = "background-color:#0000FF"	></td>  </tr>
+				<tr>	<td  id="tC6" class="colorButts" style = "background-color:#4b0082"	></td>  </tr>
+				<tr>	<td  id="tC7" class="colorButts" style = "background-color:#ee82ee"	></td>  </tr>
+			</table>
+	</div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+	
+	<script type="module" 	src = "Scripts/compositor.js"></script> 
+	<script type="module" 	src = "Scripts/cubic.js"></script> 
+	<script 				src = "Scripts/models.js"></script>  
+	<script 				src = "Scripts/funks.js"></script>  
+	<script 				src = "Scripts/pervoe.js"></script>  
+	<script 				src = "Scripts/getLocation.js"></script>  
+	<script 				src = "Scripts/curved.js"></script>  
+	<script 				src = "Scripts/map2Pic.js"></script>  
+	<script 				src = "Scripts/inner.js"></script>  
+	<script 				src = "Scripts/vusotasas.js"></script>  
+	<script 				src = "Scripts/calculations.js"></script> 
+	<script 				src = "Scripts/forTracks.js"></script> 
+	<!-- <script type="module" 	src = "Scripts/createObjects.js"></script>  -->
+		<script src = "./platoon/code/makePolyLine01.js"> </script>	
+		<script src = "./platoon/code/makePolyGon01.js"> </script>	
+		<script src = "./platoon/code/makeCircle01.js"> </script>	
+		<script src = "./platoon/code/makeRectangle01.js"> </script>	
+		<script src = "./platoon/code/makeText.js"> </script>	
+		
+		<script src = "./platoon/code/trackClass.js"> 	</script>	
+		<script src = "./platoon/code/draFunks.js"> 		</script>	
+		<script src = "./platoon/code/figurator01.js"> 		</script>	
+	
+	<script async defer 	src = "https://maps.googleapis.com/maps/
+			api/js?
+			key=AIzaSyBTv0CB1JYy4L6JeDkCfbmPNArPgRpFp3A
+			&callback=initMap
+			&libraries=visualization,geometry
+			">
+	</script>
+	
+  </body>
+</html>
+			<!-- key=AIzaSyDNDAONk3NFxXJAbeYwpubCcdsm5_08ytE -->

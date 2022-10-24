@@ -1,0 +1,104 @@
+ html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+		overflow: hidden ;
+
+}
+#mapCell {
+  height: 100%;
+}
+#upperTable {
+	position: absolute ;
+	background-color: rgba(240, 248, 255, 0.8);	
+	width: 		90% ;
+	bottom: 	0%;
+	left: 		0%; 
+	z-index: 	10 ;
+	border: 	1px ;
+//		font-size:1vh;	
+}
+#upperTable td {
+	border: 	1px solid black;
+	font-size:	11pt;	
+}
+#frd {
+//	font: 12pt sans-serif;
+	font-weight: 700;
+}
+#forFileInput {
+	width:3% ;
+}
+#blink_text {
+		animation:1s blinker linear infinite;
+		background-color: rgba(240, 248, 255, 0.5);		
+		color: red;
+		font-size:24px;
+		font-weight:bold;
+		position: absolute;
+		top: 	40% ;
+		left: 	20% ;
+		z-index: 25;
+	}
+@keyframes blinker {
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1.0; }
+}
+#forPolzun {
+	width:80% ;
+}
+#polzun {
+	width: 100% ;
+}
+#velocity {
+	position: absolute;
+	top: 1% ;
+	right: 1% ;
+	background-color: rgba(240, 248, 255, 0.8);	
+//	align: 'right' ;
+}
+#forTrackName {
+	position: absolute;
+	top: 1% ;
+	left: 40% ;
+
+//	align: 'left' ;
+}
+#saveMapButton {
+	width: 100% ;
+}
+#helpButt {
+	/* position: absolute;	 */
+	/* top: 5px ; */
+	/* right: 10px ; */
+	padding: 2px ;
+	border-radius: 25px  ;
+	opacity: 1; 
+	z-index: 5;	
+}
+#hlpRect, #saveHelp, #loadTrackWindow {
+		position: absolute;
+		top: 10vh;
+		right: 12vw ;
+		z-index: 15;	
+		border: 4px double black;
+		background-color: #E0FFFF ;
+		border-radius: 15px  ;
+		opacity: 0.85 ;
+//		font-weight: 900;
+		font-size: 14px ;
+}
+#hlpTxt {
+		margin: 3px ; 
+		padding: 3px;	
+		top: 50px;
+		left: 50px ;
+		text-align: center;	
+		font-size: 14px ;
+}
+#hlpRectClose, #saveHelpClose, #loadTrackClose {
+		position: absolute;
+		top: 7px;
+		right: 7px ;
+}

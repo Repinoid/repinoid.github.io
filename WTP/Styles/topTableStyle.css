@@ -1,0 +1,66 @@
+@media (orientation: landscape) {
+.playfield { display: block; }
+.overlay { display: none; }
+}
+@media (orientation: portrait) {
+.playfield { display: none; }
+.overlay { display: block; }
+}
+
+
+#topTable {														 /* таблица - вывод координат, задание выстоты обзора и местоположения */
+		position: absolute; 
+		top: 2px; left: 155px; 
+		z-index: 5;
+		margin: 0px 0px;
+		
+}
+.HDAcells {
+	width: 77px ;
+}
+#EleValue, #distValue, #azzyValue {
+	font-weight: 700;
+	background-color: rgba(240, 248, 255, 0.7);	
+}
+#EleValue {
+	color: red ;
+}
+.latlngVal {
+font-weight: 700;
+background-color: rgba(240, 248, 255, 0.7);	
+padding-left: 3px ;	
+padding-right: 3px ;
+}
+.LatLngCells {
+padding-left: 10px ;	
+padding-right: 10px ;	
+text-align: center ;
+width: 57px ;
+}
+#LatInHours, #LngInHours {
+width: 100px ;
+background-color: rgba(240, 248, 255, 0.7);	
+font-weight: 700;
+text-align: center ;
+}
+
+#heightVal {
+width: 50px ;	
+font: 16pt/14pt sans-serif;	
+padding: 7px ;	
+text-align: center ;
+background-color: rgba(240, 248, 255, 0.5);	
+margin-left: 5px ;	
+}
+#heightSliderCell {
+background-color: rgba(240, 248, 255, 0.7);	
+padding-left: 7px ;	
+padding-right: 3px ;
+height: 30px; 
+}
+#heightSlider {
+	height: 30px; 
+}
+#heightVal:hover, #heightSliderCell:hover  { 
+background: #e3e3e3; 
+} 

@@ -1,0 +1,172 @@
+body {
+    display: block;
+    margin: 0px 0px;
+	padding: 0px ;
+	overflow: hidden;
+}
+	#blink_text {
+		animation:1s blinker linear infinite;
+		background-color: rgba(240, 248, 255, 0.5);		
+		color: red;
+		font-size:48px;
+		font-weight:bold;
+		position: absolute;
+		top: 	400px ;
+		left: 	400px ;
+		z-index: 25;
+	}
+		@keyframes blinker {
+			0% { opacity: 1.0; }
+			50% { opacity: 0.0; }
+			100% { opacity: 1.0; }
+		}	
+#setLocationForm, #setLocationButton  {
+//		font-size:16px;
+		font-weight:bold;
+		position: absolute;
+		top: 20% ;
+		left: 1% ;
+		margin:2px auto;
+		z-index:5;
+		padding:5px 10px;
+		background-color: rgba(240, 248, 255, 0.9);			
+		border:1px solid #666666;
+		border-radius:7px;
+		box-shadow:0 0 7px rgba(0,0,0,0.5);
+//		display: none;
+		opacity: 0.88 ;	
+		z-index: 15;	
+}
+#setLocationForm {
+//		width: 25% ;	
+		font-size: 14px ;
+}
+#setLocationForm TD {
+	//	width: 100% ;	
+}
+#setLocationTableCloseX, #locationAddressButton {
+
+		text-align: right; 
+//		font-weight: 600;
+//		position: absolute;
+//		right: 15px;	
+//		vertical-align: middle ;
+}
+#locationAddressField  {
+	width: 100% ;
+}
+#locationCoordinatesField {
+	width: 70% ;
+}
+#currentCoordinatesButton {
+		color: #8B0000;
+		background-color: #E6E6FA ;
+		font-size:16px;
+		font-weight:bold;
+		width:100%; 
+}
+#oldySite {
+	position: absolute;
+	bottom: 0% ;
+	left: 	10%;
+		padding:2px 2px;
+		background-color: rgba(240, 248, 255, 0.3);			
+		border:1px solid #666666;
+		border-radius:3px;
+		box-shadow:0 0 3px rgba(0,0,0,0.5);
+		font-size:12px;
+		font-weight:bold;
+		display: none ; 
+}
+#theWar {
+	position: absolute;
+	bottom: 0% ;
+	left: 	40%;
+		padding:2px 2px;
+		background-color: rgba(240, 248, 255, 0.3);			
+		color: red;
+		border:1px solid #666666;
+		border-radius:3px;
+		box-shadow:0 0 3px rgba(0,0,0,0.5);
+		font-size:20px;
+		font-weight:bold;
+//		display: none ; 
+}
+
+
+#covidno {
+	position: absolute;
+	bottom: 0% ;
+	left: 40%;
+		padding:2px 2px;
+		background-color: rgba(240, 248, 255, 0.9);			
+		border:1px solid #666666;
+		border-radius:3px;
+		box-shadow:0 0 3px rgba(0,0,0,0.5);
+		font-size:12px;
+		font-weight:bold;
+}
+#helpButt {
+	position: absolute;	
+	top: 5px ;
+	right: 10px ;
+	padding: 2px ;
+	border-radius: 25px  ;
+	opacity: 1; 
+	z-index: 5;	
+}
+#hlpRect, #saveHelp, #helpRect, #warRect {
+		position: absolute;
+		top: 10vh;
+		right: 12vw ;
+		z-index: 15;	
+		border: 4px double black;
+		background-color: #E0FFFF ;
+		border-radius: 15px  ;
+		opacity: 0.85 ;
+//		font-weight: 900;
+		font-size: 12px ;
+}
+#hlpTxt {
+		margin: 3px ; 
+		padding: 3px;	
+		top: 50px;
+		left: 50px ;
+		text-align: center;	
+		font-size: 12px ;
+}
+#hlpRectClose, #saveHelpClose, #loadTrackClose, #warRectClose {
+		position: absolute;
+		top: 7px;
+		right: 7px ;
+}
+#urlTxt {
+	font-size:		18px;
+	font-weight:	bold;
+	font-style: 	italic;
+	text-align: 	center;
+	color: red ;
+	
+}
+#between {
+		position: absolute ;
+		left: 	3%;
+		bottom: 3%; 
+ //       width: 	25%;
+   //     height: 25%;
+        display: block; 
+		z-index: 55;
+	}
+#loadTrackWindow {
+		position: absolute;
+		top: 10vh;
+		right: 12vw ;
+		z-index: 15;	
+		border: 4px double black;
+		background-color: #E0FFFF ;
+		border-radius: 15px  ;
+		opacity: 0.85 ;
+//		font-weight: 900;
+		font-size: 14px ;
+		text-align: center;	
+}

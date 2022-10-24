@@ -1,0 +1,80 @@
+#setLocationForm, #parametersForm {
+		position: absolute;
+		top: 150px ;
+		left: 150px ;
+		margin:4px auto;
+		z-index:5;
+		padding:20px 20px;
+		background-color: rgba(240, 248, 255, 0.9);			
+		border:1px solid #666666;
+		border-radius:20px;
+		box-shadow:0 0 10px rgba(0,0,0,0.5);
+		display: none;
+		opacity: 0.88 ;	
+}
+#locationAddressField {
+		width: 500px ;
+		height: 30px ;
+		font: 14pt/12pt sans-serif; 
+		border:0 ;
+}
+#locationCoordinatesField {
+		width: 200px ;
+		height: 30px ;
+		font: 14pt/12pt sans-serif; 
+		vertical-align: bottom;
+		border: 0;
+}
+#latlngTxt {
+		font: 10pt/8pt sans-serif;
+		font-style:		italic; 
+		height: 30px ;
+}
+#locationAddressButton {
+		position: absolute;
+		right: 10px;	
+		bottom: 60px ;
+}
+#setLocationTableCloseX, #parametersCloseX {
+		text-align: right; 
+		font-weight: 600;
+		position: absolute;
+		right: 15px;	
+}
+#stepTXT, #iteraVal, #opacityVal {
+		display: inline ;
+}
+#iteraVal, #opacityVal {
+		font-weight: 700;	
+}
+.clrButts {
+		width: 30px;
+		height: 20px ;
+		margin: 3px 3px ;
+		border-radius: 15px ;
+}
+#polyOpacitySlider, #iteraSlider {
+		width: 80% ;	
+}
+#curColor {
+		width: 40px;
+		height: 40px ;
+		position: absolute;
+		right: 15px ;
+		background-color:Red ;
+		border-radius: 15px ;
+		opacity: 0.2 ;
+}
+#newySite {
+	position: absolute;
+	bottom: 10px ;
+	left: 50%;
+		padding:2px 2px;
+		background-color: rgba(240, 248, 255, 0.9);			
+		border:1px solid #666666;
+		border-radius:3px;
+		box-shadow:0 0 3px rgba(0,0,0,0.5);
+		font-size:16px;
+		font-weight:bold;
+		z-index: 50;	
+}

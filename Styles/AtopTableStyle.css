@@ -1,0 +1,102 @@
+@media (orientation: landscape) {
+.playfield { display: block; }
+.overlay { display: none; }
+}
+@media (orientation: portrait) {
+.playfield { display: none; }
+.overlay { display: block; }
+}
+
+#promptString {
+		position: absolute; 
+		bottom: 0px; 
+		right: 2%; 
+		background-color: rgba(240, 248, 255, 1);	
+		color: red ;
+		font: 12pt sans-serif;
+		font-weight: 700;
+
+}
+
+
+#topTable {														 /* таблица - вывод координат, задание выстоты обзора и местоположения */
+		position: absolute; 
+		top: 0px; 
+		left: 0px; 
+		z-index: 5;
+		margin: 0px 0px;
+}
+#mapNameDiv {
+		position: absolute; 
+		top: 2px; 
+		left: 45%; 
+//		width: 30%;
+		z-index: 5;
+		display: none ;
+}
+#mapName {	
+		background-color: rgba(240, 248, 255, 0.6);	
+//		margin: 0px 0px;
+		border:none;
+//		opacity: 0.5 ;	
+		font: 16pt sans-serif;
+		font-weight: 700;
+}
+
+.HDAcells {
+	width: 		0px ;
+	display: 	none ;
+}
+#EleValue, #distValue, #azzyValue {
+	font-weight: 700;
+	background-color: rgba(240, 248, 255, 0.7);	
+}
+#EleValue {
+	color: red ;
+}
+.latlngVal {
+font-weight: 700;
+background-color: rgba(240, 248, 255, 0.7);	
+padding-left: 3px ;	
+padding-right: 3px ;
+}
+.LatLngCells {
+//padding-left: 10px ;	
+padding-right: 10px ;	
+text-align: left ;
+//width: 57px ;
+height:60% ;
+}
+#LatInHours, #LngInHours {
+//width: 100px ;
+background-color: rgba(240, 248, 255, 0.7);	
+font-weight: 700;
+text-align: left ;
+}
+
+#heightVal {
+width: 50px ;	
+font: 16pt/14pt sans-serif;	
+padding: 7px ;	
+text-align: center ;
+background-color: rgba(240, 248, 255, 0.5);	
+margin-left: 5px ;	
+}
+#heightSliderCell {
+background-color: rgba(240, 248, 255, 0.7);	
+padding-left: 7px ;	
+padding-right: 3px ;
+height: 30px; 
+}
+#heightSlider {
+	height: 30px; 
+}
+#heightVal:hover, #heightSliderCell:hover  { 
+background: #e3e3e3; 
+} 
+#canva3D {
+    width: 100%;
+    height: 100%;
+    background: url(../PIX/mir1.jpg) no-repeat center center ;
+    background-size: cover;
+}

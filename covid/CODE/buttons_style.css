@@ -1,0 +1,49 @@
+.wB {
+//	opacity: 0 ;
+}
+.W2 {
+	width: 2% ;
+	opacity: 0 ;
+}
+.chebur {
+	width: 2% ;
+}
+#comparaButton, #daylyButton, #A_Button, #I_Button, #H_Button, #D_Button  {
+	width: 100% ;
+	height: 100% ;
+//	border-bottom-right-radius: 15px  ;
+	border-radius: 15px  ;
+//	border-top-right-radius: 15px ;
+	font-size: 100% ;
+	font-weight: 600;
+//	box-shadow: 0.2em 0.2em 2px rgba(122,122,122,0.5);
+}
+#A_Button {
+//	background-color: rgba(0, 0, 255, 0.3); 
+	box-shadow: inset 0 0 10px blue;
+}
+#D_Button {
+//	background-color: rgba(255, 0, 0, 0.3); 
+	box-shadow: inset 0 0 10px red;
+}
+#H_Button {
+//	background-color: rgba(0, 255, 0, 0.3); 
+	box-shadow: inset 0 0 10px green;
+}
+#I_Button {
+//	background-color: rgba(255, 0, 255, 0.3); 
+	box-shadow: inset 0 0 10px rgba(255, 0, 255);
+}
+#vaccButton {
+	position: absolute ;
+	top: 10px ;
+	right: 10px;
+	z-index: 10 ;
+	box-shadow: 0.2em 0.2em 2px rgba(122,122,122,0.5);
+	font-size: 100% ;
+	font-weight: 600;
+	border: 2px;
+	border-radius: 15px  ;
+	padding: 7px ;
+	background-color: rgba(255, 0, 255, 0.3); 
+}

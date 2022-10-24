@@ -1,0 +1,28 @@
+#cubatura {
+		position: absolute ;
+		left: 0%;
+		bottom: 5px; 
+        width: 25%;
+        height: 25%;
+        display: block; 
+		z-index: 55;
+	}
+input[type="range"] {
+  width:100%;
+}
+#slidersTable {
+	position: absolute;
+	cursor: pointer;
+	top: 	15px ;
+	left: 	15px ;
+	text-align: center;
+	background-color: rgba(240, 248, 255, 0.7);
+	border: 1px solid black;
+	font: 14pt/14pt sans-serif;
+	margin: 4 ; 
+	padding: 4;
+}
+#slider3D, #delitel {
+	cursor: pointer;
+	width:100%;
+}

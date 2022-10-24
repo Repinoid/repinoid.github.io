@@ -1,0 +1,8 @@
+User-agent: *
+Allow /covid
+Allow /covid/*
+#Disallow /
+#Disallow: /*.js
+#Disallow: /*.json
+#Disallow: /*.php
+
